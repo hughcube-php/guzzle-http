@@ -8,6 +8,7 @@
 
 namespace HughCube\GuzzleHttp\Tests;
 
+use GuzzleHttp\Exception\GuzzleException;
 use HughCube\GuzzleHttp\Client;
 use Psr\Http\Client\ClientInterface as PsrClientInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -33,10 +34,15 @@ class ClientTest extends TestCase
     /**
      * @dataProvider dataProviderClient
      * @return void
+     * @throws GuzzleException
      */
     public function testRequestLazy(Client $client)
     {
         $response = $client->requestLazy('POST', 'https://www.baidu.com/s?ie=UTF-8&wd=response');
+        $this->assertIsInt($response->getStatusCode());
+        $this->assertInstanceOf(ResponseInterface::class, $response);
+
+        $response = $client->request('POST', 'https://www.baidu.com/s?ie=UTF-8&wd=response');
         $this->assertIsInt($response->getStatusCode());
         $this->assertInstanceOf(ResponseInterface::class, $response);
     }
