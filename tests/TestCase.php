@@ -6,59 +6,31 @@
  * Time: 11:36 下午.
  */
 
-namespace HughCube\Laravel\Package\Tests;
+namespace HughCube\GuzzleHttp\Tests;
 
-use HughCube\Laravel\Package\Package;
-use HughCube\Laravel\Package\ServiceProvider as PackageServiceProvider;
-use Illuminate\Config\Repository;
-use Illuminate\Foundation\Application;
-use Orchestra\Testbench\TestCase as OrchestraTestCase;
+use ReflectionClass;
+use ReflectionException;
+use ReflectionMethod;
 
-class TestCase extends OrchestraTestCase
+class TestCase extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @param  Application  $app
+     * @param  string|object  $object  $object
+     * @param  string  $method
+     * @param  array  $args
+     * @return mixed
+     * @throws ReflectionException
      *
-     * @return array
      */
-    protected function getPackageProviders($app): array
+    protected static function callMethod($object, string $method, array $args = [])
     {
-        return [
-            PackageServiceProvider::class,
-        ];
+        $class = new ReflectionClass($object);
+
+        /** @var ReflectionMethod $method */
+        $method = $class->getMethod($method);
+        $method->setAccessible(true);
+
+        return $method->invokeArgs((is_object($object) ? $object : null), $args);
     }
 
-    /**
-     * @param  Application  $app
-     */
-    protected function getEnvironmentSetUp($app)
-    {
-        $this->setupCache($app);
-
-        /** @var Repository $appConfig */
-        $appConfig = $app['config'];
-        $appConfig->set(
-            Package::getFacadeAccessor(),
-            (require dirname(__DIR__).'/config/config.php')
-        );
-    }
-
-    /**
-     * @param  Application  $app
-     */
-    protected function setupCache(Application $app)
-    {
-        /** @var Repository $appConfig */
-        $appConfig = $app['config'];
-
-        $appConfig->set('cache', [
-            'default' => 'default',
-            'stores' => [
-                'default' => [
-                    'driver' => 'file',
-                    'path' => sprintf('/tmp/test/%s', md5(serialize([__METHOD__]))),
-                ],
-            ],
-        ]);
-    }
 }

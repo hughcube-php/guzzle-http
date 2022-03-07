@@ -1,5 +1,5 @@
 {
-    "name": "hughcube/laravel-package",
+    "name": "hughcube/guzzle-http",
     "description": "",
     "license": "MIT",
     "authors": [
@@ -9,31 +9,24 @@
         }
     ],
     "require": {
-        "php": "7.*|8.*",
-        "illuminate/support": ">=8.0"
+        "php": ">=7.0",
+        "guzzlehttp/guzzle": "*",
+        "symfony/http-client": "^6.0"
     },
     "require-dev": {
-        "laravel/framework": "*",
-        "laravel/lumen-framework": "*",
-        "squizlabs/php_codesniffer": "*",
         "phpstan/phpstan": "*",
-        "orchestra/testbench": "*"
+        "squizlabs/php_codesniffer": "*",
+        "mockery/mockery": "*",
+        "phpunit/phpunit": "*"
     },
     "autoload": {
         "psr-4": {
-            "HughCube\\Laravel\\Package\\": "src"
+            "HughCube\\GuzzleHttp\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "HughCube\\Laravel\\Package\\Tests\\": "tests"
-        }
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "HughCube\\Laravel\\Package\\ServiceProvider"
-            ]
+            "HughCube\\GuzzleHttp\\Tests\\": "tests"
         }
     },
     "scripts": {
