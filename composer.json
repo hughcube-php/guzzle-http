@@ -10,8 +10,7 @@
     ],
     "require": {
         "php": ">=7.0",
-        "guzzlehttp/guzzle": "*",
-        "symfony/http-client": "^6.0"
+        "guzzlehttp/guzzle": "*"
     },
     "require-dev": {
         "phpstan/phpstan": "*",
