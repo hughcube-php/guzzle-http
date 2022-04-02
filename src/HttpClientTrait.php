@@ -20,12 +20,12 @@ trait HttpClientTrait
      */
     protected function getHttpClient(): Client
     {
+        if (!$this->httpClient instanceof Client && method_exists($this, 'createHttpClient')) {
+            $this->httpClient = $this->createHttpClient();
+        }
+
         if (!$this->httpClient instanceof Client) {
-            if (method_exists($this, 'createHttpClient')) {
-                $this->httpClient = $this->createHttpClient();
-            } else {
-                $this->httpClient = new Client();
-            }
+            $this->httpClient = new Client();
         }
 
         return $this->httpClient;
