@@ -10,33 +10,6 @@
     <a href="https://styleci.io/repos/217659566">
         <img src="https://github.styleci.io/repos/217659566/shield?branch=master" alt="StyleCI">
     </a>
-    <a href="https://scrutinizer-ci.com/g/hughcube-php/guzzle-http/?branch=master">
-        <img src="https://scrutinizer-ci.com/g/hughcube-php/guzzle-http/badges/coverage.png?b=master" alt="Code Coverage">
-    </a>
-    <a href="https://scrutinizer-ci.com/g/hughcube-php/guzzle-http/?branch=master">
-        <img src="https://scrutinizer-ci.com/g/hughcube-php/guzzle-http/badges/quality-score.png?b=master" alt="Scrutinizer Code Quality">
-    </a> 
-    <a href="https://scrutinizer-ci.com/g/hughcube-php/guzzle-http/?branch=master">
-        <img src="https://scrutinizer-ci.com/g/hughcube-php/guzzle-http/badges/code-intelligence.svg?b=master" alt="Code Intelligence Status">
-    </a>        
-    <a href="https://github.com/hughcube-php/guzzle-http">
-        <img src="https://img.shields.io/badge/php-%3E%3D%207.0-8892BF.svg" alt="PHP Versions Supported">
-    </a>
-    <a href="https://packagist.org/packages/hughcube/guzzle-http">
-        <img src="https://poser.pugx.org/hughcube-php/guzzle-http/version" alt="Latest Stable Version">
-    </a>
-    <a href="https://packagist.org/packages/hughcube/guzzle-http">
-        <img src="https://poser.pugx.org/hughcube-php/guzzle-http/downloads" alt="Total Downloads">
-    </a>
-    <a href="https://github.com/hughcube-php/guzzle-http/blob/master/LICENSE">
-        <img src="https://img.shields.io/badge/license-MIT-428f7e.svg" alt="License">
-    </a>
-    <a href="https://packagist.org/packages/hughcube/guzzle-http">
-        <img src="https://poser.pugx.org/hughcube-php/guzzle-http/v/unstable" alt="Latest Unstable Version">
-    </a>
-    <a href="https://packagist.org/packages/hughcube/guzzle-http">
-        <img src="https://poser.pugx.org/hughcube-php/guzzle-http/composerlock" alt="composer.lock available">
-    </a>
 </p>
 
 ## Installing

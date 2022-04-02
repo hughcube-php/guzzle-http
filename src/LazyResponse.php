@@ -54,6 +54,21 @@ class LazyResponse implements ResponseInterface
     }
 
     /**
+     * @return null|array
+     */
+    public function toArray()
+    {
+        $contents = $this->getBody()->getContents();
+        $this->getBody()->rewind();
+
+        $results = json_decode($contents, true);
+        if (JSON_ERROR_NONE === json_last_error()) {
+            return $results;
+        }
+        return null;
+    }
+
+    /**
      * @inheritDoc
      */
     public function getProtocolVersion()

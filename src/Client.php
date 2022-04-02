@@ -54,9 +54,9 @@ class Client implements ClientInterface
      * @param  string  $method
      * @param  string|UriInterface  $uri
      * @param  array  $options
-     * @return ResponseInterface
+     * @return LazyResponse
      */
-    public function requestLazy(string $method, $uri = '', array $options = []): ResponseInterface
+    public function requestLazy(string $method, $uri = '', array $options = []): LazyResponse
     {
         $promise = $this->requestAsync($method, $uri, $options);
         return new LazyResponse($promise);
@@ -65,9 +65,9 @@ class Client implements ClientInterface
     /**
      * @param  string|UriInterface  $uri
      * @param  array  $options
-     * @return ResponseInterface
+     * @return LazyResponse
      */
-    public function getLazy($uri, array $options = []): ResponseInterface
+    public function getLazy($uri, array $options = []): LazyResponse
     {
         return $this->requestLazy('GET', $uri, $options);
     }
@@ -75,9 +75,9 @@ class Client implements ClientInterface
     /**
      * @param  string|UriInterface  $uri
      * @param  array  $options
-     * @return ResponseInterface
+     * @return LazyResponse
      */
-    public function headLazy($uri, array $options = []): ResponseInterface
+    public function headLazy($uri, array $options = []): LazyResponse
     {
         return $this->requestLazy('HEAD', $uri, $options);
     }
@@ -85,9 +85,9 @@ class Client implements ClientInterface
     /**
      * @param  string|UriInterface  $uri
      * @param  array  $options
-     * @return ResponseInterface
+     * @return LazyResponse
      */
-    public function putLazy($uri, array $options = []): ResponseInterface
+    public function putLazy($uri, array $options = []): LazyResponse
     {
         return $this->requestLazy('PUT', $uri, $options);
     }
@@ -95,9 +95,9 @@ class Client implements ClientInterface
     /**
      * @param  string|UriInterface  $uri
      * @param  array  $options
-     * @return ResponseInterface
+     * @return LazyResponse
      */
-    public function postLazy($uri, array $options = []): ResponseInterface
+    public function postLazy($uri, array $options = []): LazyResponse
     {
         return $this->requestLazy('POST', $uri, $options);
     }
@@ -105,9 +105,9 @@ class Client implements ClientInterface
     /**
      * @param  string|UriInterface  $uri
      * @param  array  $options
-     * @return ResponseInterface
+     * @return LazyResponse
      */
-    public function patchLazy($uri, array $options = []): ResponseInterface
+    public function patchLazy($uri, array $options = []): LazyResponse
     {
         return $this->requestLazy('PATCH', $uri, $options);
     }
@@ -115,9 +115,9 @@ class Client implements ClientInterface
     /**
      * @param  string|UriInterface  $uri
      * @param  array  $options
-     * @return ResponseInterface
+     * @return LazyResponse
      */
-    public function deleteLazy($uri, array $options = []): ResponseInterface
+    public function deleteLazy($uri, array $options = []): LazyResponse
     {
         return $this->requestLazy('DELETE', $uri, $options);
     }

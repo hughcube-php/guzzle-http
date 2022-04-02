@@ -10,6 +10,7 @@ namespace HughCube\GuzzleHttp\Tests;
 
 use GuzzleHttp\Exception\GuzzleException;
 use HughCube\GuzzleHttp\Client;
+use HughCube\GuzzleHttp\LazyResponse;
 use Psr\Http\Client\ClientInterface as PsrClientInterface;
 use Psr\Http\Message\ResponseInterface;
 
@@ -41,6 +42,16 @@ class ClientTest extends TestCase
         $response = $client->requestLazy('POST', 'https://www.baidu.com/s?ie=UTF-8&wd=response');
         $this->assertIsInt($response->getStatusCode());
         $this->assertInstanceOf(ResponseInterface::class, $response);
+        $this->assertInstanceOf(LazyResponse::class, $response);
+        $this->assertNull($response->toArray());
+        $this->assertNotEmpty($response->getBody()->getContents());
+
+        $response = $client->requestLazy('POST', 'https://apis.map.qq.com/ws/place/v1/suggestion');
+        $this->assertIsInt($response->getStatusCode());
+        $this->assertInstanceOf(ResponseInterface::class, $response);
+        $this->assertInstanceOf(LazyResponse::class, $response);
+        $this->assertIsArray($results = $response->toArray());
+        $this->assertSame($results, json_decode($response->getBody()->getContents(), true));
 
         $response = $client->request('POST', 'https://www.baidu.com/s?ie=UTF-8&wd=response');
         $this->assertIsInt($response->getStatusCode());
