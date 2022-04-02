@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: hugh.li
  * Date: 2022/3/7
- * Time: 19:32
+ * Time: 19:32.
  */
 
 namespace HughCube\GuzzleHttp;
@@ -25,7 +25,7 @@ class LazyResponse implements ResponseInterface
     private $result;
 
     /**
-     * @param  PromiseInterface  $promise
+     * @param PromiseInterface $promise
      */
     public function __construct(PromiseInterface $promise)
     {
@@ -40,12 +40,14 @@ class LazyResponse implements ResponseInterface
         if (!$this->result instanceof ResponseInterface) {
             $this->result = $this->promise->wait();
         }
+
         return $this->result;
     }
 
     /**
-     * @param  string  $method
-     * @param  array  $arguments
+     * @param string $method
+     * @param array  $arguments
+     *
      * @return mixed
      */
     protected function call(string $method, array $arguments = [])
@@ -65,6 +67,7 @@ class LazyResponse implements ResponseInterface
         if (JSON_ERROR_NONE === json_last_error()) {
             return $results;
         }
+
         return null;
     }
 

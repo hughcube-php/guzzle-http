@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: hugh.li
  * Date: 2022/3/7
- * Time: 22:43
+ * Time: 22:43.
  */
 
 namespace HughCube\GuzzleHttp\Tests;
@@ -15,9 +15,9 @@ use ReflectionException;
 class HttpClientTraitTest extends TestCase
 {
     /**
-     * @return void
      * @throws ReflectionException
      *
+     * @return void
      */
     public function testGetHttpClient()
     {

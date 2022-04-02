@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: hugh.li
  * Date: 2022/3/7
- * Time: 19:35
+ * Time: 19:35.
  */
 
 namespace HughCube\GuzzleHttp;
@@ -25,7 +25,7 @@ class Client implements ClientInterface
     private $httpClient;
 
     /**
-     * @param  array  $config
+     * @param array $config
      */
     public function __construct(array $config = [])
     {
@@ -41,8 +41,9 @@ class Client implements ClientInterface
     }
 
     /**
-     * @param  string  $name
-     * @param  array  $arguments
+     * @param string $name
+     * @param array  $arguments
+     *
      * @return mixed
      */
     public function __call(string $name, array $arguments = [])
@@ -51,20 +52,23 @@ class Client implements ClientInterface
     }
 
     /**
-     * @param  string  $method
-     * @param  string|UriInterface  $uri
-     * @param  array  $options
+     * @param string              $method
+     * @param string|UriInterface $uri
+     * @param array               $options
+     *
      * @return LazyResponse
      */
     public function requestLazy(string $method, $uri = '', array $options = []): LazyResponse
     {
         $promise = $this->requestAsync($method, $uri, $options);
+
         return new LazyResponse($promise);
     }
 
     /**
-     * @param  string|UriInterface  $uri
-     * @param  array  $options
+     * @param string|UriInterface $uri
+     * @param array               $options
+     *
      * @return LazyResponse
      */
     public function getLazy($uri, array $options = []): LazyResponse
@@ -73,8 +77,9 @@ class Client implements ClientInterface
     }
 
     /**
-     * @param  string|UriInterface  $uri
-     * @param  array  $options
+     * @param string|UriInterface $uri
+     * @param array               $options
+     *
      * @return LazyResponse
      */
     public function headLazy($uri, array $options = []): LazyResponse
@@ -83,8 +88,9 @@ class Client implements ClientInterface
     }
 
     /**
-     * @param  string|UriInterface  $uri
-     * @param  array  $options
+     * @param string|UriInterface $uri
+     * @param array               $options
+     *
      * @return LazyResponse
      */
     public function putLazy($uri, array $options = []): LazyResponse
@@ -93,8 +99,9 @@ class Client implements ClientInterface
     }
 
     /**
-     * @param  string|UriInterface  $uri
-     * @param  array  $options
+     * @param string|UriInterface $uri
+     * @param array               $options
+     *
      * @return LazyResponse
      */
     public function postLazy($uri, array $options = []): LazyResponse
@@ -103,8 +110,9 @@ class Client implements ClientInterface
     }
 
     /**
-     * @param  string|UriInterface  $uri
-     * @param  array  $options
+     * @param string|UriInterface $uri
+     * @param array               $options
+     *
      * @return LazyResponse
      */
     public function patchLazy($uri, array $options = []): LazyResponse
@@ -113,8 +121,9 @@ class Client implements ClientInterface
     }
 
     /**
-     * @param  string|UriInterface  $uri
-     * @param  array  $options
+     * @param string|UriInterface $uri
+     * @param array               $options
+     *
      * @return LazyResponse
      */
     public function deleteLazy($uri, array $options = []): LazyResponse

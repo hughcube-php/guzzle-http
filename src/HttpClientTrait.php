@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: hugh.li
  * Date: 2022/3/7
- * Time: 19:34
+ * Time: 19:34.
  */
 
 namespace HughCube\GuzzleHttp;
@@ -27,6 +27,7 @@ trait HttpClientTrait
                 $this->httpClient = new Client();
             }
         }
+
         return $this->httpClient;
     }
 }
