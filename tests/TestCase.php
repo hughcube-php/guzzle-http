@@ -15,12 +15,13 @@ use ReflectionMethod;
 class TestCase extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @param  string|object  $object  $object
-     * @param  string  $method
-     * @param  array  $args
-     * @return mixed
+     * @param string|object $object $object
+     * @param string        $method
+     * @param array         $args
+     *
      * @throws ReflectionException
      *
+     * @return mixed
      */
     protected static function callMethod($object, string $method, array $args = [])
     {
@@ -32,5 +33,4 @@ class TestCase extends \PHPUnit\Framework\TestCase
 
         return $method->invokeArgs((is_object($object) ? $object : null), $args);
     }
-
 }

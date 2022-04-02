@@ -19,12 +19,13 @@ class ClientTest extends TestCase
     public function dataProviderClient(): array
     {
         return [
-            [new Client()]
+            [new Client()],
         ];
     }
 
     /**
      * @dataProvider dataProviderClient
+     *
      * @return void
      */
     public function testIsPsr(Client $client)
@@ -34,8 +35,10 @@ class ClientTest extends TestCase
 
     /**
      * @dataProvider dataProviderClient
-     * @return void
+     *
      * @throws GuzzleException
+     *
+     * @return void
      */
     public function testRequestLazy(Client $client)
     {
