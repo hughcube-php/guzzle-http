@@ -24,41 +24,25 @@ class LazyResponse implements ResponseInterface
      */
     private $result;
 
-    /**
-     * @param PromiseInterface $promise
-     */
     public function __construct(PromiseInterface $promise)
     {
         $this->promise = $promise;
     }
 
-    /**
-     * @return ResponseInterface
-     */
     protected function getOriginalResponse(): ResponseInterface
     {
         if (!$this->result instanceof ResponseInterface) {
             $this->result = $this->promise->wait();
         }
-
         return $this->result;
     }
 
-    /**
-     * @param string $method
-     * @param array  $arguments
-     *
-     * @return mixed
-     */
     protected function call(string $method, array $arguments = [])
     {
         return $this->getOriginalResponse()->$method(...$arguments);
     }
 
-    /**
-     * @return null|array
-     */
-    public function toArray()
+    public function toArray(): ?array
     {
         $contents = $this->getBody()->getContents();
         $this->getBody()->rewind();
@@ -190,6 +174,6 @@ class LazyResponse implements ResponseInterface
 
     public function __call(string $name, array $arguments = [])
     {
-        $this->call($name, $arguments);
+        return $this->call($name, $arguments);
     }
 }
