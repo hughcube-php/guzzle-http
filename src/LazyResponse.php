@@ -34,6 +34,7 @@ class LazyResponse implements ResponseInterface
         if (!$this->result instanceof ResponseInterface) {
             $this->result = $this->promise->wait();
         }
+
         return $this->result;
     }
 
