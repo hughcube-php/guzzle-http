@@ -9,6 +9,7 @@
 namespace HughCube\GuzzleHttp;
 
 use GuzzleHttp\Client as BaseClient;
+use GuzzleHttp\Exception\GuzzleException;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\UriInterface;
@@ -32,11 +33,15 @@ class Client implements ClientInterface
     }
 
     /**
-     * @inheritDoc
+     * @throws GuzzleException
      */
     public function sendRequest(RequestInterface $request): ResponseInterface
     {
-        return $this->httpClient->sendRequest($request);
+        if (method_exists($this->httpClient, 'sendRequest')) {
+            return $this->httpClient->sendRequest($request);
+        }
+
+        return $this->httpClient->send($request);
     }
 
     /**
