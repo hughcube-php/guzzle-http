@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: hugh.li
  * Date: 2022/5/24
- * Time: 11:33
+ * Time: 11:33.
  */
 
 namespace HughCube\GuzzleHttp;
