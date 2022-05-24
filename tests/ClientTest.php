@@ -10,9 +10,9 @@ namespace HughCube\GuzzleHttp\Tests;
 
 use GuzzleHttp\Exception\GuzzleException;
 use HughCube\GuzzleHttp\Client;
+use HughCube\GuzzleHttp\ClientInterface;
 use HughCube\GuzzleHttp\LazyResponse;
 use Psr\Http\Message\ResponseInterface;
-use HughCube\GuzzleHttp\ClientInterface;
 
 class ClientTest extends TestCase
 {
