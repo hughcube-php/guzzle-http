@@ -11,8 +11,8 @@ namespace HughCube\GuzzleHttp\Tests;
 use GuzzleHttp\Exception\GuzzleException;
 use HughCube\GuzzleHttp\Client;
 use HughCube\GuzzleHttp\LazyResponse;
-use Psr\Http\Client\ClientInterface as PsrClientInterface;
 use Psr\Http\Message\ResponseInterface;
+use HughCube\GuzzleHttp\ClientInterface;
 
 class ClientTest extends TestCase
 {
@@ -30,7 +30,7 @@ class ClientTest extends TestCase
      */
     public function testIsPsr(Client $client)
     {
-        $this->assertInstanceOf(PsrClientInterface::class, $client);
+        $this->assertInstanceOf(ClientInterface::class, $client);
     }
 
     /**
