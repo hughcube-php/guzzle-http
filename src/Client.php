@@ -10,6 +10,7 @@ namespace HughCube\GuzzleHttp;
 
 use GuzzleHttp\Client as BaseClient;
 use GuzzleHttp\Exception\GuzzleException;
+use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\UriInterface;
@@ -33,7 +34,9 @@ class Client implements ClientInterface
     }
 
     /**
+     * @inheritdoc
      * @throws GuzzleException
+     * @throws ClientExceptionInterface
      */
     public function sendRequest(RequestInterface $request): ResponseInterface
     {
@@ -46,7 +49,7 @@ class Client implements ClientInterface
 
     /**
      * @param string $name
-     * @param array  $arguments
+     * @param array $arguments
      *
      * @return mixed
      */
@@ -56,9 +59,9 @@ class Client implements ClientInterface
     }
 
     /**
-     * @param string              $method
+     * @param string $method
      * @param string|UriInterface $uri
-     * @param array               $options
+     * @param array $options
      *
      * @return LazyResponse
      */
@@ -71,7 +74,7 @@ class Client implements ClientInterface
 
     /**
      * @param string|UriInterface $uri
-     * @param array               $options
+     * @param array $options
      *
      * @return LazyResponse
      */
@@ -82,7 +85,7 @@ class Client implements ClientInterface
 
     /**
      * @param string|UriInterface $uri
-     * @param array               $options
+     * @param array $options
      *
      * @return LazyResponse
      */
@@ -93,7 +96,7 @@ class Client implements ClientInterface
 
     /**
      * @param string|UriInterface $uri
-     * @param array               $options
+     * @param array $options
      *
      * @return LazyResponse
      */
@@ -104,7 +107,7 @@ class Client implements ClientInterface
 
     /**
      * @param string|UriInterface $uri
-     * @param array               $options
+     * @param array $options
      *
      * @return LazyResponse
      */
@@ -115,7 +118,7 @@ class Client implements ClientInterface
 
     /**
      * @param string|UriInterface $uri
-     * @param array               $options
+     * @param array $options
      *
      * @return LazyResponse
      */
@@ -126,7 +129,7 @@ class Client implements ClientInterface
 
     /**
      * @param string|UriInterface $uri
-     * @param array               $options
+     * @param array $options
      *
      * @return LazyResponse
      */
