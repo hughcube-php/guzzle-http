@@ -24,6 +24,11 @@ class LazyResponse implements ResponseInterface
      */
     private $result;
 
+    /**
+     * @var null|array
+     */
+    private $resultArray = null;
+
     public function __construct(PromiseInterface $promise)
     {
         $this->promise = $promise;
@@ -43,14 +48,18 @@ class LazyResponse implements ResponseInterface
         return $this->getOriginalResponse()->$method(...$arguments);
     }
 
-    public function toArray(): ?array
+    public function toArray($rewind = true): ?array
     {
+        if (!$rewind && null !== $this->resultArray) {
+            return $this->resultArray;
+        }
+
         $contents = $this->getBody()->getContents();
         $this->getBody()->rewind();
 
         $results = json_decode($contents, true);
         if (JSON_ERROR_NONE === json_last_error()) {
-            return $results;
+            return $this->resultArray = $results;
         }
 
         return null;
