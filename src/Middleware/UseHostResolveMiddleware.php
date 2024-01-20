@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: hugh.li
  * Date: 2024/1/20
- * Time: 22:15
+ * Time: 22:15.
  */
 
 namespace HughCube\GuzzleHttp\Middleware;
@@ -17,7 +17,6 @@ class UseHostResolveMiddleware
     public static function middleware(callable $handler): Closure
     {
         return function (RequestInterface $request, array $options) use ($handler) {
-
             if (!$request->hasHeader('Host')) {
                 $request = $request->withHeader('Host', $request->getUri()->getHost());
             }
@@ -44,6 +43,7 @@ class UseHostResolveMiddleware
                 $map[$match[1]] = $match[2];
             }
         }
+
         return $map;
     }
 }

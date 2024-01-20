@@ -35,6 +35,7 @@ class ClientTest extends TestCase
 
     /**
      * @dataProvider dataProviderClient
+     *
      * @throws GuzzleException
      */
     public function testRequestLazy(Client $client)

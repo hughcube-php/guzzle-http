@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: hugh.li
  * Date: 2024/1/20
- * Time: 23:11
+ * Time: 23:11.
  */
 
 namespace HughCube\GuzzleHttp\Tests\Middleware;
@@ -42,13 +42,13 @@ class UseHostResolveMiddlewareTest extends TestCase
             sprintf('https://%s/s?ie=UTF-8&wd=response', $host),
             [
                 RequestOptions::HEADERS => [
-                    'Host' => $host
+                    'Host' => $host,
                 ],
                 'extra' => [
                     'host_resolve' => [
-                        $host => $ip
-                    ]
-                ]
+                        $host => $ip,
+                    ],
+                ],
             ]
         );
         $this->assertIsInt($response->getStatusCode());
