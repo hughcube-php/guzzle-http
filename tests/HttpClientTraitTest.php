@@ -16,10 +16,10 @@ use ReflectionException;
 class HttpClientTraitTest extends TestCase
 {
     /**
-     * @return void
      * @throws ReflectionException
      * @throws Exception
      *
+     * @return void
      */
     public function testGetHttpClient()
     {
