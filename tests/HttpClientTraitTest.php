@@ -10,14 +10,16 @@ namespace HughCube\GuzzleHttp\Tests;
 
 use HughCube\GuzzleHttp\Client;
 use HughCube\GuzzleHttp\HttpClientTrait;
+use PHPUnit\Framework\MockObject\Exception;
 use ReflectionException;
 
 class HttpClientTraitTest extends TestCase
 {
     /**
-     * @throws ReflectionException
-     *
      * @return void
+     * @throws ReflectionException
+     * @throws Exception
+     *
      */
     public function testGetHttpClient()
     {

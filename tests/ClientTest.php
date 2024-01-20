@@ -16,7 +16,7 @@ use Psr\Http\Message\ResponseInterface;
 
 class ClientTest extends TestCase
 {
-    public function dataProviderClient(): array
+    public static function dataProviderClient(): array
     {
         return [
             [new Client()],
@@ -35,10 +35,7 @@ class ClientTest extends TestCase
 
     /**
      * @dataProvider dataProviderClient
-     *
      * @throws GuzzleException
-     *
-     * @return void
      */
     public function testRequestLazy(Client $client)
     {

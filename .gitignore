@@ -9,3 +9,5 @@ composer.lock
 .phpunit.result.cache
 composer-setup.php
 composer.phar
+.phpunit.cache/
+phpunit.xml.dist
