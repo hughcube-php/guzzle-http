@@ -53,4 +53,19 @@ class UseHostResolveMiddlewareTest extends TestCase
         );
         $this->assertIsInt($response->getStatusCode());
     }
+
+    public function testParseConfig()
+    {
+        $this->assertSame(UseHostResolveMiddleware::parseConfig(''), []);
+
+        $this->assertSame(
+            UseHostResolveMiddleware::parseConfig('www.baidu.com:1.1.1.1'),
+            ['www.baidu.com' => '1.1.1.1']
+        );
+
+        $this->assertSame(
+            UseHostResolveMiddleware::parseConfig('www.baidu.com:1.1.1.1,baidu.com:1.1.1.2'),
+            ['www.baidu.com' => '1.1.1.1', 'baidu.com' => '1.1.1.2']
+        );
+    }
 }
