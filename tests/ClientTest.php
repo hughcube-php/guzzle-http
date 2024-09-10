@@ -12,6 +12,7 @@ use GuzzleHttp\Exception\GuzzleException;
 use HughCube\GuzzleHttp\Client;
 use HughCube\GuzzleHttp\ClientInterface;
 use HughCube\GuzzleHttp\LazyResponse;
+use HughCube\GuzzleHttp\LazyResponseBody;
 use Psr\Http\Message\ResponseInterface;
 
 class ClientTest extends TestCase
@@ -44,6 +45,8 @@ class ClientTest extends TestCase
         $this->assertIsInt($response->getStatusCode());
         $this->assertInstanceOf(ResponseInterface::class, $response);
         $this->assertInstanceOf(LazyResponse::class, $response);
+        $this->assertInstanceOf(LazyResponseBody::class, $response->getBody());
+        $this->assertIsString($response->getBody()->getContents());
         $this->assertNull($response->toArray());
         $this->assertNotEmpty($response->getBody()->getContents());
 

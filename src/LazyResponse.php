@@ -35,7 +35,7 @@ class LazyResponse implements ResponseInterface
         $this->promise = $promise;
     }
 
-    protected function getOriginalResponse(): ResponseInterface
+    public function getOriginalResponse(): ResponseInterface
     {
         if (!$this->result instanceof ResponseInterface) {
             $this->result = $this->promise->wait();
@@ -64,6 +64,11 @@ class LazyResponse implements ResponseInterface
         }
 
         return null;
+    }
+
+    public function getBody(): StreamInterface
+    {
+        return new LazyResponseBody($this);
     }
 
     /**
@@ -134,14 +139,6 @@ class LazyResponse implements ResponseInterface
      * @inheritDoc
      */
     public function withoutHeader(string $name): MessageInterface
-    {
-        return $this->call(__FUNCTION__, func_get_args());
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function getBody(): StreamInterface
     {
         return $this->call(__FUNCTION__, func_get_args());
     }
