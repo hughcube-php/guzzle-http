@@ -55,8 +55,8 @@ class LazyResponse implements ResponseInterface
             return $this->resultArray;
         }
 
-        $contents = $this->getBody()->getContents();
-        $this->getBody()->rewind();
+        $contents = $this->getOriginalResponse()->getBody()->getContents();
+        $this->getOriginalResponse()->getBody()->rewind();
 
         $results = json_decode($contents, true);
         if (JSON_ERROR_NONE === json_last_error()) {
@@ -173,6 +173,17 @@ class LazyResponse implements ResponseInterface
     public function getReasonPhrase(): string
     {
         return $this->call(__FUNCTION__, func_get_args());
+    }
+
+    public function getBodyContents($rewind = true): string
+    {
+        $contents = $this->getOriginalResponse()->getBody()->getContents();
+
+        if ($rewind) {
+            $this->getOriginalResponse()->getBody()->rewind();
+        }
+
+        return $contents;
     }
 
     public function __destruct()
