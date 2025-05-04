@@ -41,6 +41,7 @@ class Client implements ClientInterface
      */
     public function sendRequest(RequestInterface $request): ResponseInterface
     {
+        /** @phpstan-ignore-next-line */
         if (method_exists($this->httpClient, 'sendRequest')) {
             return $this->httpClient->sendRequest($request);
         }
