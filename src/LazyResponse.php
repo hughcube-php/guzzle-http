@@ -12,6 +12,7 @@ use GuzzleHttp\Promise\PromiseInterface;
 use Psr\Http\Message\MessageInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
+use Throwable;
 
 class LazyResponse implements ResponseInterface
 {
@@ -188,7 +189,10 @@ class LazyResponse implements ResponseInterface
 
     public function __destruct()
     {
-        $this->getOriginalResponse();
+        try {
+            $this->getOriginalResponse();
+        } catch (Throwable $throwable) {
+        }
     }
 
     public function __call(string $name, array $arguments = [])
